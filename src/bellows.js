@@ -16,8 +16,6 @@ if (!browser) {
     createCanvas = require('canvas').createCanvas
 }
 
-
-
 function line (ctx, rgba, start, end) {
     ctx.strokeStyle = `rgba(${rgba})`
     ctx.beginPath()
@@ -78,10 +76,9 @@ function taper (back, front, length, pos) {
  *
  * @example
  * Generate the default square bellows in 2 parts and print the string to the console.
- * ```
+ *
  * const b = bellows({ parts : 2 })
  * console.log(b)
- * ```
  */
 
 function bellows (options = {}) {
@@ -91,7 +88,7 @@ function bellows (options = {}) {
     let dpi = options.dpi || 300
     const MM = dpi / IN
 
-    let pageW = options.pageW || dpi * 11
+    let pageW = options.pageW || dpi * 8.5
     let pageH = options.pageH || dpi * 11
 
     let frontIW = options.frontIW  || Math.round(MM * 40)
