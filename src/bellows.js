@@ -8,6 +8,8 @@
 
 const IN = 25.4
 const BLACK = '0,0,0,1.0'
+const RED = '255,0,0,1.0'
+const BLUE = '0,0,255,1.0'
 
 let browser = (typeof module === 'undefined')
 let createCanvas
@@ -110,16 +112,14 @@ function bellows (options = {}) {
     let centerX = Math.round(pageW / 2)
     let centerY = Math.round(pageH / 2)
 
+    let key = (typeof options.key !== 'undefined' && options.key === false) ? false : true
+
     let fold = (frontOW - frontIW) / 2
     let folds = Math.floor(maxLength / fold)
     let length = folds * fold
 
     let angleW
     let angleH
-
-    //console.dir(options)
-
-
 
     if (!browser) {
         canvas = createCanvas(pageW, pageH)
@@ -136,13 +136,10 @@ function bellows (options = {}) {
     ctx.fillStyle = 'rgba(255, 255, 255, 1.0)'
     ctx.fillRect(0, 0, pageW, pageH)
 
-    //key
-    ctx.font = '15px Arial'; 
+    //text config
+    ctx.fillStyle='rgba(0,0,0,1.0)'
+    ctx.font = '24px Arial'; 
     ctx.textAlign= 'start'; 
-	ctx.fillText('Cut lines' ,150, 60); 
-
-    line(ctx, BLACK, [IN * dpi, IN * dpi], [(2 * IN) * dpi, IN * dpi])
-
 
     function sideW (side) {
         const frontOffset = Math.round((backOW - frontOW) / 2)
@@ -179,7 +176,7 @@ function bellows (options = {}) {
             		t = 0
             	}
             	//fold out
-                dash(ctx, '255,0,0,1.0', dpi, [foldIN + t, Y + (i * fold)], [foldIN + backIW - t, Y + (i * fold)])
+                dash(ctx, BLUE, dpi, [foldIN + t, Y + (i * fold)], [foldIN + backIW - t, Y + (i * fold)])
             } else {
             	if (backOW !== frontOW) {
             		t = taper(backOW, frontOW, length, i * fold)
@@ -187,7 +184,7 @@ function bellows (options = {}) {
             		t = 0
             	}
             	//fold in
-                dash(ctx, '0,0,255,1.0', dpi, [foldOUT + t, Y + (i * fold)], [foldOUT + backOW - t, Y + (i * fold)])
+                dash(ctx, RED, dpi, [foldOUT + t, Y + (i * fold)], [foldOUT + backOW - t, Y + (i * fold)])
             }
         }
 
@@ -201,7 +198,7 @@ function bellows (options = {}) {
             		t = 0
             		t2 = 0
             	}
-        		dash(ctx, '255,0,0,1.0', dpi, [foldIN + t, Y + i * fold ], [foldIN - ((backOW - backIW) / 2) + t2, (Y + (i + 1) * fold) ])
+        		dash(ctx, BLUE, dpi, [foldIN + t, Y + i * fold ], [foldIN - ((backOW - backIW) / 2) + t2, (Y + (i + 1) * fold) ])
         	} else {
         		if (backIW !== frontIW) {
             		t = taper(backIW, frontIW, length, i * fold)
@@ -210,7 +207,7 @@ function bellows (options = {}) {
             		t = 0
             		t2 = 0
             	}
-            	dash(ctx, '255,0,0,1.0', dpi, [foldOUT + t, Y + i * fold ], [foldIN + t2, (Y + (i + 1) * fold) ])
+            	dash(ctx, BLUE, dpi, [foldOUT + t, Y + i * fold ], [foldIN + t2, (Y + (i + 1) * fold) ])
         	}
         	//
         }
@@ -224,7 +221,7 @@ function bellows (options = {}) {
             		t = 0
             		t2 = 0
             	}
-        		dash(ctx, '255,0,0,1.0', dpi, [foldIN + backIW - t, Y + i * fold ], [foldOUT + backOW - t2, (Y + (i + 1) * fold) ])
+        		dash(ctx, BLUE, dpi, [foldIN + backIW - t, Y + i * fold ], [foldOUT + backOW - t2, (Y + (i + 1) * fold) ])
         	} else {
         		if (backIW !== frontIW) {
             		t = taper(backIW, frontIW, length, i * fold)
@@ -233,7 +230,7 @@ function bellows (options = {}) {
             		t = 0
             		t2 = 0
             	}
-            	dash(ctx, '255,0,0,1.0', dpi, [foldOUT + backOW - t, Y + i * fold ], [foldIN + backIW - t2, (Y + (i + 1) * fold) ])
+            	dash(ctx, BLUE, dpi, [foldOUT + backOW - t, Y + i * fold ], [foldIN + backIW - t2, (Y + (i + 1) * fold) ])
         	}
         	//
         }
@@ -274,7 +271,7 @@ function bellows (options = {}) {
             		t = 0
             	}
             	//fold out
-                dash(ctx, '255,0,0,1.0', dpi, [foldIN + t, Y + (i * fold)], [foldIN + backIH - t, Y + (i * fold)])
+                dash(ctx, BLUE, dpi, [foldIN + t, Y + (i * fold)], [foldIN + backIH - t, Y + (i * fold)])
             } else {
             	if (backOH !== frontOH) {
             		t = taper(backOH, frontOH, length, i * fold)
@@ -282,7 +279,7 @@ function bellows (options = {}) {
             		t = 0
             	}
             	//fold in
-                dash(ctx, '0,0,255,1.0', dpi, [foldOUT + t, Y + (i * fold)], [foldOUT + backOH - t, Y + (i * fold)])
+                dash(ctx, RED, dpi, [foldOUT + t, Y + (i * fold)], [foldOUT + backOH - t, Y + (i * fold)])
             }
         }
         
@@ -296,7 +293,7 @@ function bellows (options = {}) {
             		t = 0
             		t2 = 0
             	}
-        		dash(ctx, '255,0,0,1.0', dpi, [foldIN + t, Y + i * fold ], [foldIN - ((backOH - backIH) / 2) + t2, (Y + (i + 1) * fold) ])
+        		dash(ctx, BLUE, dpi, [foldIN + t, Y + i * fold ], [foldIN - ((backOH - backIH) / 2) + t2, (Y + (i + 1) * fold) ])
         	} else {
         		if (backIH !== frontIH) {
             		t = taper(backIH, frontIH, length, i * fold)
@@ -305,7 +302,7 @@ function bellows (options = {}) {
             		t = 0
             		t2 = 0
             	}
-            	dash(ctx, '255,0,0,1.0', dpi, [foldOUT + t, Y + i * fold ], [foldIN + t2, (Y + (i + 1) * fold) ])
+            	dash(ctx, BLUE, dpi, [foldOUT + t, Y + i * fold ], [foldIN + t2, (Y + (i + 1) * fold) ])
         	}
         	//
         }
@@ -319,7 +316,7 @@ function bellows (options = {}) {
             		t = 0
             		t2 = 0
             	}
-        		dash(ctx, '255,0,0,1.0', dpi, [foldIN + backIH - t, Y + i * fold ], [foldOUT + backOH - t2, (Y + (i + 1) * fold) ])
+        		dash(ctx, BLUE, dpi, [foldIN + backIH - t, Y + i * fold ], [foldOUT + backOH - t2, (Y + (i + 1) * fold) ])
         	} else {
         		if (backIH !== frontIH) {
             		t = taper(backIH, frontIH, length, i * fold)
@@ -328,14 +325,34 @@ function bellows (options = {}) {
             		t = 0
             		t2 = 0
             	}
-            	dash(ctx, '255,0,0,1.0', dpi, [foldOUT + backOH - t, Y + i * fold ], [foldIN + backIH - t2, (Y + (i + 1) * fold) ])
+            	dash(ctx, BLUE, dpi, [foldOUT + backOH - t, Y + i * fold ], [foldIN + backIH - t2, (Y + (i + 1) * fold) ])
         	}
         }
     }
 
-    function overlap () {
+    function overlap (side) {
+        const frontOffset = Math.round((backOW - frontOW) / 2)
 
+        const X = -backOW / 2
+        const Y = -length / 2
+
+    	let foldIN = X + ((backOW - backIW) / 2) //inside
+    	let foldOUT = X //outside
+    	let t
+    	let t2
     }
+
+    if (key) {
+	    //key
+	    ctx.fillText('Cut lines', dpi / 2, dpi / 2); 
+	    line(ctx, BLACK, [dpi / 2, (dpi / 2) + 10], [dpi, (dpi / 2) + 10]);
+
+	    ctx.fillText('Fold away', dpi / 2, (dpi / 2) + (dpi / 6)); 
+	    dash(ctx, BLUE, dpi, [dpi / 2, (dpi / 2) + (dpi / 6) + 10], [dpi, (dpi / 2) + (dpi / 6) + 10]);
+
+		ctx.fillText('Fold toward', dpi / 2, (dpi / 2) + (dpi / 3)); 
+	    dash(ctx, RED, dpi, [dpi / 2, (dpi / 2) + (dpi / 3) + 10], [dpi, (dpi / 2) + (dpi / 3) + 10]);
+	}
 
     ctx.translate(centerX, centerY)
     angleW = Math.atan( (backOW - frontOW) / length) // / (Math.PI / 180)
@@ -348,7 +365,7 @@ function bellows (options = {}) {
     sideW(1)
 
     if (parts === 4) {
-    	ctx.translate(backOH - backIH, 0)
+    	ctx.translate(backOH - backIH + (0.2 * backOW), 0)
     }
 
     ctx.translate((backOW / 2) + (backOH / 2) - (((backOW - frontIW) + (backOH - frontIH)) / 4), align)

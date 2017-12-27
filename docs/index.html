@@ -101,6 +101,10 @@ input{
 			<label for="align">Adjust Alignment</label>
 			<input name="align" type="number" value="0" min="0" />
 		</div>
+		<div>
+			<label for="key">Show Key</label>
+			<input name="key" type="checkbox" checked />
+		</div>
 	</div>
 </form>
 <div>
@@ -108,8 +112,8 @@ input{
 	<button id="download" onclick="download();">Download</button>
 </div>
 <img id="img" />
-<!--<script src="../src/bellows.js"> </script>-->
-<script src="https://rawgit.com/sixteenmillimeter/bellows/master/src/bellows.js">
+<script src="../src/bellows.js"> </script>
+
 </script>
 <script>
 	'use script'
@@ -140,6 +144,7 @@ input{
 
 		const maxLength = Math.round($('maxLength').value * MM);
 
+		const key = $('key').checked
 		const align = Math.round($('align').value);
 		let parts = Math.round($('parts').value);
 
@@ -165,7 +170,8 @@ input{
 
 				maxLength : maxLength,
 				parts : parts,
-				align : align
+				align : align,
+				key : key
 			}
 		);
 		document.getElementById('img').setAttribute('src', B);
