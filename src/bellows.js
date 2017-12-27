@@ -54,6 +54,9 @@ function taper (back, front, length, pos) {
 }
 
 /**
+ * @alias module:bellows
+ * @typicalname:bellows
+ *
  * Generate bellows pattern for cutting and folding.
  *
  * @param {Object} 	[options]			Bellows configuration options
@@ -75,8 +78,6 @@ function taper (back, front, length, pos) {
  * returns {String}  Base64 encoded png data
  *
  * @example
- * Generate the default square bellows in 2 parts and print the string to the console.
- *
  * const b = bellows({ parts : 2 })
  * console.log(b)
  */

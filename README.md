@@ -5,12 +5,11 @@
 ```js
 const bellows = require('bellows')
 ```
-<a name="module_bellows..bellows"></a>
+<a name="exp_module_bellows--bellows"></a>
 
-### bellows~bellows([options])
-Generate bellows pattern for cutting and folding.
-
-**Kind**: inner method of [<code>bellows</code>](#module_bellows)  
+### bellows([options]) ⏏
+**Kind**: Exported function  
+**Typicalname:bellows**: Generate bellows pattern for cutting and folding.  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -31,8 +30,7 @@ Generate bellows pattern for cutting and folding.
 | [options.parts] | <code>Integer</code> | Number of parts to split pattern into: 1, 2, or 4 returns {String}  Base64 encoded png data |
 
 **Example**  
-Generate the default square bellows in 2 parts and print the string to the console.
-```
+```js
 const b = bellows({ parts : 2 })
 console.log(b)
 ```
