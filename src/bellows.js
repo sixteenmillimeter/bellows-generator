@@ -6,21 +6,6 @@
  * const bellows = require('bellows')
  */
 
- /**
-  * ### Install (node.js)
-  *
-  * First, install dependencies required by 
-  * [node-canvas](https://github.com/Automattic/node-canvas) by following 
-  * the [install instructions](https://github.com/Automattic/node-canvas#installation) 
-  * for your OS.
-  *
-  *```
-  * git clone https://github.com/sixteenmillimeter/bellows.git
-  * cd bellows
-  * npm install
-  *```
-  */
-
 const IN = 25.4
 const BLACK = '0,0,0,1.0'
 
@@ -392,3 +377,20 @@ function bellows (options = {}) {
 if (!browser) {
     module.exports = bellows
 }
+
+ /**
+  * Try it out [in the browser](https://sixteenmillimeter.github.io/bellows/).
+  *
+  * ### Install (node.js)
+  *
+  * First, install dependencies required by 
+  * [node-canvas](https://github.com/Automattic/node-canvas) by following 
+  * the [install instructions](https://github.com/Automattic/node-canvas#installation) 
+  * for your OS.
+  *
+  *```
+  * git clone https://github.com/sixteenmillimeter/bellows.git
+  * cd bellows
+  * npm install
+  *```
+  */
