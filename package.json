@@ -1,0 +1,29 @@
+{
+  "name": "bellows",
+  "version": "0.0.1",
+  "description": "Generate bellows folding and cutting patterns.",
+  "main": "./src/bellows.js",
+  "dependencies": {
+    "canvas": "^2.0.0-alpha.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sixteenmillimeter/bellows.git"
+  },
+  "keywords": [
+    "bellows",
+    "folding",
+    "paper",
+    "craft"
+  ],
+  "author": "sixteenmillimeter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sixteenmillimeter/bellows/issues"
+  },
+  "homepage": "https://github.com/sixteenmillimeter/bellows#readme"
+}

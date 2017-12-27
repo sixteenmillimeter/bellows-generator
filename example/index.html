@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+<head>
+<title>Bellows Browser Example</title>
+<style>
+form{
+	clear: both;
+}
+form:after{
+	display: block;
+	content: " ";
+}
+label{
+	width: 150px;
+	display: inline-block;
+}
+form > div {
+	width: 400px;
+	float: left;
+	margin: 20px 0;
+}
+img{
+	width: 100%;
+	height: auto;
+	border: 1px solid #000;
+}
+button{
+	margin: 10px 20px;
+}
+input{
+	margin-top: 10px;
+}
+</style>
+</head>
+<body>
+<h1>
+	Bellows Pattern Generator
+</h1>
+<div>
+	<a href="https://github.com/sixteenmillimeter/bellows">View Source</a>
+</div>
+<form onsubmit="return false;">
+	<div>
+		<div>
+			<label for="backOW">Back Outer Width</label>
+			<input name="backOW" type="number" value="50" /> mm
+		</div>
+		<div>
+			<label for="backIW">Back Inner Width</label>
+			<input name="backIW" type="number" value="40" /> mm
+		</div>
+		<div>
+			<label for="backOH">Back Outer Height</label>
+			<input name="backOH" type="number" value="50" /> mm
+		</div>
+		<div>
+			<label for="backIH">Back Inner Height</label>
+			<input name="backIH" type="number" value="40" /> mm
+		</div>
+	</div>
+	<div>
+		<div>
+			<label for="frontOW">Front Outer Width</label>
+			<input name="frontOW" type="number" value="50" /> mm
+		</div>
+		<div>
+			<label for="frontIW">Front Inner Width</label>
+			<input name="frontIW" type="number" value="40" /> mm
+		</div>
+		<div>
+			<label for="frontOH">Front Outer Height</label>
+			<input name="frontOH" type="number" value="50" /> mm
+		</div>
+		<div>
+			<label for="frontIH">Front Inner Height</label>
+			<input name="frontIH" type="number" value="40" /> mm
+		</div>
+	</div>
+	<div>
+		<div>
+			<label for="pageW">Sheet Width</label>
+			<input name="pageW" type="number" value="11" /> in
+		</div>
+		<div>
+			<label for="pageH">Sheet Height</label>
+			<input name="pageH" type="number" value="11" /> in
+		</div>
+		<div>
+			<label for="dpi">DPI</label>
+			<input name="dpi" type="number" value="300" />
+		</div>
+		<div>
+			<label for="maxLength">Maximum Length</label>
+			<input name="maxLength" type="number" value="200" /> mm
+		</div>
+		<div>
+			<label for="parts">Seperate Parts</label>
+			<input name="parts" type="number" value="1" min="1" max="4" /> 1, 2, or 4
+		</div>
+		<div>
+			<label for="align">Adjust Alignment</label>
+			<input name="align" type="number" value="0" min="0" />
+		</div>
+	</div>
+</form>
+<div>
+	<button id="refresh" onclick="refresh();">Refresh</button>
+	<button id="download" onclick="download();">Download</button>
+</div>
+<img id="img" />
+<script src="../src/bellows.js"> </script>
+<script>
+	'use script'
+	const $ = function (select) {
+		return document.querySelector(`[name="${select}"]`)
+	}
+	let B
+	function refresh () {
+
+		const IN = 25.4
+		const DPI = $('dpi').value
+		const MM = DPI / IN
+
+		const pageW = Math.round($('pageW').value * DPI);
+		const pageH = Math.round($('pageH').value * DPI);
+
+		const backOW = Math.round($('backOW').value * MM);
+		const backIW = Math.round($('backIW').value * MM);
+
+		const backOH = Math.round($('backOH').value * MM);
+		const backIH = Math.round($('backIH').value * MM);
+
+		const frontOW = Math.round($('frontOW').value * MM);
+		const frontIW = Math.round($('frontIW').value * MM);
+		
+		const frontOH = Math.round($('frontOH').value * MM);
+		const frontIH = Math.round($('frontIH').value * MM);
+
+		const maxLength = Math.round($('maxLength').value * MM);
+
+		const align = Math.round($('align').value);
+		let parts = Math.round($('parts').value);
+
+		if (parts === 3 || parts > 4) {
+			parts = 1
+		}
+
+		B = bellows(
+			{
+				dpi : DPI,
+
+				pageW : pageW,
+				pageH : pageH,
+
+				backOW : backOW,
+				backIW : backIW,
+				backOH : backOH,
+				backIH : backIH,
+				frontOW : frontOW,
+				frontIW : frontIW,
+				frontOH : frontOH,
+				frontIH : frontIH,
+
+				maxLength : maxLength,
+				parts : parts,
+				align : align
+			}
+		);
+		document.getElementById('img').setAttribute('src', B);
+	}
+	function download () {
+		const a  = document.createElement('a');
+	    a.href = B;
+	    a.download = 'bellows.png';
+
+	    a.click();
+	}
+	refresh()
+</script>
+</body>
+</html
