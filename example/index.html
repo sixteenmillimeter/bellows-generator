@@ -101,14 +101,6 @@ input{
 			<label for="align">Adjust Alignment</label>
 			<input name="align" type="number" value="0" min="0" />
 		</div>
-		<div>
-			<label for="key">Show Key</label>
-			<input name="key" type="checkbox" checked />
-		</div>
-		<div>
-			<label for="overlap">Add Overlapping Tab</label>
-			<input name="overlap" type="checkbox" checked />
-		</div>
 	</div>
 </form>
 <div>
@@ -117,8 +109,6 @@ input{
 </div>
 <img id="img" />
 <script src="../src/bellows.js"> </script>
-<!--<script src="https://rawgit.com/sixteenmillimeter/bellows/master/src/bellows.js">-->
-</script>
 <script>
 	'use script'
 	const $ = function (select) {
@@ -148,8 +138,6 @@ input{
 
 		const maxLength = Math.round($('maxLength').value * MM);
 
-		const key = $('key').checked;
-		const overlap = $('overlap').checked;
 		const align = Math.round($('align').value);
 		let parts = Math.round($('parts').value);
 
@@ -175,9 +163,7 @@ input{
 
 				maxLength : maxLength,
 				parts : parts,
-				align : align,
-				key : key,
-				overlap : overlap
+				align : align
 			}
 		);
 		document.getElementById('img').setAttribute('src', B);

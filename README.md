@@ -27,7 +27,9 @@ const bellows = require('bellows')
 | [options.backOH] | <code>Integer</code> | Back outer height of bellows in pixels |
 | [options.maxLength] | <code>Integer</code> | Maximum length of bellows in pixels |
 | [options.align] | <code>Integer</code> | Vertical alignment adjustment in pixels |
-| [options.parts] | <code>Integer</code> | Number of parts to split pattern into: 1, 2, or 4 returns {String}  Base64 encoded png data |
+| [options.parts] | <code>Integer</code> | Number of parts to split pattern into: 1, 2, or 4 |
+| [options.key] | <code>Boolean</code> | Print key on page |
+| [options.overlap] | <code>Boolean</code> | Add overlapping flap between parts returns {String}  Base64 encoded png data |
 
 **Example**  
 ```js
