@@ -5,11 +5,18 @@
 ```js
 const bellows = require('bellows')
 ```
+
+* [bellows](#module_bellows)
+    * [bellows([options])](#exp_module_bellows--bellows) ⏏
+        * [~IN](#module_bellows--bellows..IN)
+
 <a name="exp_module_bellows--bellows"></a>
 
 ### bellows([options]) ⏏
+Generate bellows pattern for cutting and folding.
+
 **Kind**: Exported function  
-**Typicalname:bellows**: Generate bellows pattern for cutting and folding.  
+**Typicalname:bellows**:   
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -36,3 +43,22 @@ const bellows = require('bellows')
 const b = bellows({ parts : 2 })
 console.log(b)
 ```
+<a name="module_bellows--bellows..IN"></a>
+
+#### bellows~IN
+Try it out [in the browser](https://sixteenmillimeter.github.io/bellows/).
+
+### Install (node.js)
+
+First, install dependencies required by 
+[node-canvas](https://github.com/Automattic/node-canvas) by following 
+the [install instructions](https://github.com/Automattic/node-canvas#installation) 
+for your OS.
+
+```
+git clone https://github.com/sixteenmillimeter/bellows.git
+cd bellows
+npm install
+```
+
+**Kind**: inner constant of [<code>bellows</code>](#exp_module_bellows--bellows)  
