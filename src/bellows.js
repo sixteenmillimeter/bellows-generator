@@ -124,6 +124,8 @@ function bellows (options = {}) {
     let backIH = options.backIH || Math.round(MM * 40)
     let backOH = options.backOH || Math.round(MM * 50)
 
+    let fold = options.fold || (frontOW - frontIW) / 2
+
     let align = options.align || 0 //adjust the alignment (find formula)
 
     let maxLength = options.maxLength || MM * 280
@@ -135,7 +137,6 @@ function bellows (options = {}) {
     let key = (typeof options.key !== 'undefined' && options.key === false) ? false : true
     let over = (typeof options.overlap !== 'undefined' && options.overlap === false) ? false : true
 
-    let fold = (frontOW - frontIW) / 2
     let folds = Math.floor(maxLength / fold)
     let length = folds * fold
 

@@ -75,6 +75,10 @@ input{
 			<label for="frontIH">Front Inner Height</label>
 			<input name="frontIH" type="number" value="40" /> mm
 		</div>
+		<div>
+			<label for="fold">Fold Section</label>
+			<input name="fold" type="number" value="10" /> mm
+		</div>
 	</div>
 	<div>
 		<div>
@@ -138,6 +142,7 @@ input{
 		const frontIH = Math.round($('frontIH').value * MM);
 
 		const maxLength = Math.round($('maxLength').value * MM);
+		const fold = Math.round($('fold').value * MM);
 
 		const align = Math.round($('align').value);
 		let parts = Math.round($('parts').value);
@@ -161,6 +166,7 @@ input{
 				frontIW : frontIW,
 				frontOH : frontOH,
 				frontIH : frontIH,
+				fold : fold,
 
 				maxLength : maxLength,
 				parts : parts,
