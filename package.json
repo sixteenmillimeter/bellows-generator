@@ -4,9 +4,13 @@
   "description": "Generate bellows folding and cutting patterns.",
   "main": "./src/bellows.js",
   "dependencies": {
-    "canvas": "^2.0.0-alpha.9"
+    "canvas": "^2.0.0-alpha.9",
+    "dxf-writer": "^1.0.8"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jsdoc-to-markdown": "^4.0.1",
+    "qunit": "^2.5.0"
+  },
   "scripts": {
     "test": "node ./example"
   },
