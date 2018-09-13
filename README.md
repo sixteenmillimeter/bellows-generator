@@ -1,5 +1,8 @@
 <a name="module_bellows"></a>
 
+## TRY OUT DEMO
+<a href="https://sixteenmillimeter.github.io/bellows-generator/">Works in your browser</a>
+
 ## bellows
 **Example**  
 ```js
