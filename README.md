@@ -1,7 +1,7 @@
 <a name="module_bellows"></a>
 
 ## TRY OUT DEMO
-<a href="https://sixteenmillimeter.github.io/bellows-generator/">Works in your browser</a>
+[Works in your browser](https://sixteenmillimeter.github.io/bellows-generator/)
 
 ## bellows
 **Example**  
@@ -49,7 +49,7 @@ console.log(b)
 <a name="module_bellows--bellows..IN"></a>
 
 #### bellows~IN
-Try it out [in the browser](https://sixteenmillimeter.github.io/bellows/).
+Try it out [in the browser](https://sixteenmillimeter.github.io/bellows-generator/).
 
 ### Install (node.js)
 
